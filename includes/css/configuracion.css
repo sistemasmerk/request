@@ -1,0 +1,31 @@
+body{
+    background: #f2f2f2;/*Color de fondo del contenedor*/
+}
+
+.barra-lateral{
+    background: #343a40;/*Color de la barra lateral*/
+    /*color: #fff;*/ 
+}
+.barra-lateral a{
+    color: #fff;/*Color del texto en menu*/
+}
+.barra-lateral .logo img{
+    width: 150px;/*tamaño del logo*/    
+}
+
+.barra-lateral .logo{
+    background: #343a40;/*color del fondo en area de logo*/  
+    width: 150px;  /* Ajusta el ancho del logo según necesites */
+    height: auto;
+}
+
+.barra-lateral .menu a:hover{
+    background: #17a2b8 !important; /*Color de fondo en menu donde pasa cursor*/
+}
+
+.jumbotron {
+    background-color: #f8f9fa;/* Color de fondo del jumbotron */
+}
+
+
+
