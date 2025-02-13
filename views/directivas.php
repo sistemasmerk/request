@@ -8,8 +8,9 @@ class Directivas{
 		$menus = $registros['registros'];
         
                 $html = '<ul class="navbar-nav mr-auto">';
-                    $html .= '<li class="nav-item active"> <a href="index.php?seccion=session&accion=inicio" class="nav-link"><i class="icon-home"></i><span>Inicio</span></a></li>';
-
+                $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=inicio" class="nav-link"><i class="bi bi-house"></i><span>Inicio</span></a></li>';
+                //$html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link"><i class="bi bi-power"></i><span>Salir</span></a></li>';
+                //echo"<pre> --------"; print_r('lllll' ); echo"</pre>";//die;
                     foreach ($menus as $key => $menu) {
                             $etiqueta_menu = str_replace('_', ' ', $menu['descripcion']);
 
@@ -23,7 +24,7 @@ class Directivas{
                                     ".$submenu."
                                 </div></li>";                        
                     }
-                    $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link"><i class="icon-logout"></i><span>Salir</span></a></li>';
+                    $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link"><i class="bi bi-power"></i><span>Salir</span></a></li>';
                 $html .= '</ul>';
                 
 		return $html;
@@ -32,16 +33,16 @@ class Directivas{
 		$modelo_submenu = new Menu();
 		$resultado = $modelo_submenu->obten_submenu_permitido($menu_id);
 		$menus = $resultado['registros'];
-
+        
 		$html = "";
 		foreach ($menus as $key => $menu) {
-
+        //echo"<pre> --------"; print_r($menu  ); echo"</pre>";die;
                     $etiqueta_menu = str_replace('_', ' ', $menu['descripcion']);
 
                     $seccion_menu_descripcion = $menu['seccion'];
 
                     $submenu = $this->link_menu($menu['id'], $seccion_menu_descripcion);
-    //echo"<pre> --------"; print_r($submenu  ); echo"</pre>";//die;  
+    
                     $html = $html.$submenu;
 		}
 		return $html;
@@ -52,11 +53,11 @@ class Directivas{
 		$modelo_accion = new Accion();
 		$resultado = $modelo_accion->obten_accion_permitida($seccion_menu_id);
 		$menus = $resultado['registros'];
-   //echo"<pre> --------"; print_r($link_seccion_menu_descripcion  ); echo"</pre>";//die;                     
+   //echo"<pre> --------"; print_r($menus  ); echo"</pre>";die;                     
 		$html = "";
 		foreach ($menus as $key => $menu) {
 			//$link_accion = strtolower($menu['accion_descripcion']);
-                        $link_accion = strtolower($menu['cat_sis_accion_nombre']);
+                        $link_accion = strtolower($menu['sis_accion_nombre']);
                         
 			$etiqueta_accion = ucfirst($link_accion);
     

@@ -51,28 +51,24 @@ class Menu extends Modelos{
                 
                 $grupo_id = $_SESSION['grupo_id'];
 
-                $consulta = "SELECT 
-                		seccion_menu.id AS id ,
-                		seccion_menu.icono AS icono,
-                		seccion_menu.nombre AS descripcion, menu.nombre AS seccion
-                            FROM cat_sis_menu AS menu 
-                                INNER JOIN cat_sis_submenu AS seccion_menu ON menu.id = seccion_menu.menu_id
-                                INNER JOIN cat_sis_accion AS accion ON accion.submenu_id = seccion_menu.id
-                                INNER JOIN cat_sis_accion_grupo AS permiso ON permiso.accion_id = accion.id
-                                INNER JOIN cat_sis_grupo AS grupo ON grupo.id = permiso.grupo_id
-                            WHERE 
-                                    seccion_menu.status = 1 
-                                    AND accion.status = 1 
-                                    AND grupo.status = 1 
-                                    AND permiso.grupo_id = $grupo_id AND seccion_menu.menu_id = $menu_id
-                                    AND accion.visible = 1
-                            GROUP BY seccion_menu.id
+                $consulta = "SELECT menu.id_sis_menu AS id, menu.icono AS icono,	menu.nombre AS descripcion, submenu.nombre AS seccion
+                            FROM sis_menu AS menu 
+                                INNER JOIN sis_submenu AS submenu ON menu.id_sis_menu = submenu.sis_menu_id
+                                INNER JOIN sis_accion AS accion ON submenu.id_sis_submenu = accion.sis_submenu_id
+                                INNER JOIN sis_accion_grupo AS permiso ON accion.id_sis_accion = permiso.sis_accion_id
+                                INNER JOIN sis_grupo AS grupo ON permiso.sis_grupo_id = grupo.id_sis_grupo
+                            WHERE submenu.status = 1 
+                                AND accion.status = 1 
+                                AND grupo.status = 1 
+                                AND permiso.sis_grupo_id = $grupo_id AND submenu.sis_menu_id = $menu_id
+                                AND accion.visible = 1
+                            GROUP BY submenu.id_sis_submenu
                 ";
-        //echo"<pre>"; print_r($consulta); echo"</pre>";die;
+        
         //echo"--->" . $consulta . "+++ <br>";
                 $result = $link->query($consulta);
                 $n_registros = $result->num_rows;
-
+//echo"<pre>"; print_r($result); echo"</pre>";die;
                 if($link->error){
                 	return array('mensaje'=>$link->error.' '.$consulta, 'error'=>True);
                 }

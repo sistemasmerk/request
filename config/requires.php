@@ -25,12 +25,12 @@ require_once('controladores/controlador_caja.php');
 
 require_once('controladores/controlador_session.php');
 require_once('controladores/controlador_empleado.php');
-require_once('controladores/controlador_cat_sis_menu.php');
-require_once('controladores/controlador_cat_sis_submenu.php');
-require_once('controladores/controlador_cat_sis_grupo.php');
-require_once('controladores/controlador_cat_sis_accion.php');
+require_once('controladores/controlador_sis_menu.php');
+require_once('controladores/controlador_sis_submenu.php');
+require_once('controladores/controlador_sis_grupo.php');
+require_once('controladores/controlador_sis_accion.php');
 require_once('controladores/controlador_sis_usuario.php');
-require_once('controladores/controlador_cat_sis_accion_grupo.php');
+require_once('controladores/controlador_sis_accion_grupo.php');
 */
 
 

@@ -11,44 +11,34 @@ class consultas_base{
     }
     private function obten_columnas_completas($tabla){//echo"--> " . $tabla . "<--- <br><br>";
         $columnas = "";
-        if($tabla == 'cat_sis_accion'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_submenu')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_menu')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_accion');
+        if($tabla == 'sis_accion'){
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_submenu')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_menu')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_accion');
         }
-        if($tabla == 'producto'){
-            $columnas = $columnas.$this->genera_columnas_consulta('producto');
-        }
-        if($tabla == 'precios'){
-            $columnas = $columnas.$this->genera_columnas_consulta('precios');
-        }
-        if($tabla == 'inventario'){
-            $columnas = $columnas.$this->genera_columnas_consulta('inventario');
-        }
-        if($tabla == 'cat_turno'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_turno');
-        }
-        if($tabla == 'cat_sis_grupo'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_grupo');
+        
+        
+        if($tabla == 'sis_grupo'){
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_grupo');
         }
                 
-        if($tabla == 'cat_sis_submenu'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_submenu')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_menu');
+        if($tabla == 'sis_submenu'){
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_submenu')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_menu');
         }
         if($tabla == 'sis_usuario'){
             $columnas = $columnas.$this->genera_columnas_consulta('sis_usuario')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_grupo');
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_grupo');
         }
-        if($tabla == 'cat_sis_accion_grupo'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_accion_grupo')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_accion')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_grupo')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_submenu')." , ";
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_menu');
+        if($tabla == 'sis_accion_grupo'){
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_accion_grupo')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_accion')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_grupo')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_submenu')." , ";
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_menu');
         }
-        if($tabla == 'cat_sis_menu'){
-            $columnas = $columnas.$this->genera_columnas_consulta('cat_sis_menu');
+        if($tabla == 'sis_menu'){
+            $columnas = $columnas.$this->genera_columnas_consulta('sis_menu');
         }    
         
 
@@ -56,42 +46,33 @@ class consultas_base{
     }
     private function obten_tablas_completas($tabla){
         $tablas = "";
-        if($tabla == 'cat_sis_accion'){
-            $tablas = $tablas.' cat_sis_accion AS cat_sis_accion';
-            $tablas = $tablas.' INNER JOIN cat_sis_submenu AS cat_sis_submenu ON cat_sis_submenu.id = cat_sis_accion.submenu_id';
-            $tablas = $tablas.' INNER JOIN cat_sis_menu AS cat_sis_menu ON cat_sis_menu.id = cat_sis_submenu.menu_id';
+        if($tabla == 'sis_accion'){
+            $tablas = $tablas.' sis_accion AS sis_accion';
+            $tablas = $tablas.' INNER JOIN sis_submenu AS sis_submenu ON sis_submenu.id_sis_submenu = sis_accion.sis_submenu_id';
+            $tablas = $tablas.' INNER JOIN sis_menu AS sis_menu ON sis_menu.id_sis_menu = sis_submenu.sis_menu_id';
         }
-        if($tabla == 'cat_sis_grupo'){
-            $tablas = $tablas.' cat_sis_grupo AS cat_sis_grupo';
+        if($tabla == 'sis_grupo'){
+            $tablas = $tablas.' sis_grupo AS sis_grupo';
         }        
-        if($tabla == 'cat_sis_submenu'){
-            $tablas = $tablas.' cat_sis_submenu AS cat_sis_submenu';
-            $tablas = $tablas.' INNER JOIN cat_sis_menu AS cat_sis_menu ON cat_sis_menu.id = cat_sis_submenu.menu_id';
+        if($tabla == 'sis_submenu'){
+            $tablas = $tablas.' sis_submenu AS sis_submenu';
+            $tablas = $tablas.' INNER JOIN sis_menu AS sis_menu ON sis_menu.id_sis_menu = sis_submenu.sis_menu_id';
         }
-        if($tabla == 'cat_sis_menu'){
-            $tablas = $tablas.' cat_sis_menu AS cat_sis_menu';
+        if($tabla == 'sis_menu'){
+            $tablas = $tablas.' sis_menu AS sis_menu';
         }
         if($tabla == 'sis_usuario'){
             $tablas = $tablas.' sis_usuario AS sis_usuario';
-            $tablas = $tablas.' INNER JOIN cat_sis_grupo AS cat_sis_grupo ON cat_sis_grupo.id = sis_usuario.grupo_id';
+            $tablas = $tablas.' INNER JOIN sis_grupo AS sis_grupo ON sis_grupo.id_sis_grupo = sis_usuario.grupo_id';
         }
-        if($tabla == 'cat_sis_accion_grupo'){
-            $tablas = $tablas.' cat_sis_accion_grupo AS cat_sis_accion_grupo';
-            $tablas = $tablas.' INNER JOIN cat_sis_accion AS cat_sis_accion ON cat_sis_accion.id = cat_sis_accion_grupo.accion_id';
-            $tablas = $tablas.' INNER JOIN cat_sis_grupo AS cat_sis_grupo ON cat_sis_grupo.id = cat_sis_accion_grupo.grupo_id';
-            $tablas = $tablas.' INNER JOIN cat_sis_submenu AS cat_sis_submenu ON cat_sis_submenu.id = cat_sis_accion.submenu_id';
-            $tablas = $tablas.' INNER JOIN cat_sis_menu AS cat_sis_menu ON cat_sis_menu.id = cat_sis_submenu.menu_id';
+        if($tabla == 'sis_accion_grupo'){
+            $tablas = $tablas.' sis_accion_grupo AS sis_accion_grupo';
+            $tablas = $tablas.' INNER JOIN sis_accion AS sis_accion ON sis_accion.id_sis_accion = sis_accion_grupo.sis_accion_id';
+            $tablas = $tablas.' INNER JOIN sis_grupo AS sis_grupo ON sis_grupo.id_sis_grupo = sis_accion_grupo.sis_grupo_id';
+            $tablas = $tablas.' INNER JOIN sis_submenu AS sis_submenu ON sis_submenu.id_sis_submenu = sis_accion.sis_submenu_id';
+            $tablas = $tablas.' INNER JOIN sis_menu AS sis_menu ON sis_menu.id_sis_menu = sis_submenu.sis_menu_id';
         }
-        if($tabla == 'producto'){
-            $tablas = $tablas.' producto AS producto';
-        }
-        if($tabla == 'precios'){
-            $tablas = $tablas.' precios AS precios';
-        }
-        if($tabla == 'inventario'){
-            $tablas = $tablas.' inventario AS inventario';
-        }
-        
+                
         return $tablas;
     }
     

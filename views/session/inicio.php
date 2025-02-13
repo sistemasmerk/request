@@ -1,8 +1,8 @@
-<div class="row">
+<!--<div class="row">
     <div class="columna col-lg-7">
         <div class=" widget area-juego" id="area-juego">
             <h3 class="titulo">Area de juego</h3>
-            <?php echo $directivas->obten_mesas(); ?>
+            <?php // echo $directivas->obten_mesas(); ?>
         </div>
         
         <div class="widget" >
@@ -14,7 +14,7 @@
                 <input type="text" class="form-control mt-2 mb-2" name="comentarios" id="comentarios" placeholder="Comentrios (opcional)" style="display:none">
             </div>
             <div id="area-tiempos" class="contenedor d-flex flex-wrap justify-content-center">
-                <?php echo $directivas->obten_tiempo_nocargado(); ?>
+                <?php // echo $directivas->obten_tiempo_nocargado(); ?>
             </div>
             <div class="d-flex justify-content-start">
                 <button id="nueva_cuenta" class="btn btn-secondary">Nueva cuenta</button>
@@ -31,7 +31,7 @@
             <h3 class="titulo">Productos</h3>
             <div class="contenedor d-flex flex-wrap justify-content-center area_productos">
                 <?php
-                    echo $directivas->obten_productos();
+//                    echo $directivas->obten_productos();
                 ?>                
             </div>
         </div>
@@ -49,14 +49,12 @@
                     <th class="nombre_consumo" scope="col">Nombre</th>
                     <th class="consumo" scope="col"></th>
                     <th class="actualizar" scope="col"></th>
-                    <!--<th scope="col">Last</th>
-                    <th scope="col">Handle</th>-->
               </tr>
             </thead>
             <tbody id="filas_cuentas">
                 
               <?php
-                    echo $directivas->obten_cuentas(); 
+//                    echo $directivas->obten_cuentas(); 
                 ?>
               
             </tbody>
@@ -65,7 +63,7 @@
     </div>
 </div>
                 <?php
-                    echo $directivas->crea_modal_cuenta();
+//                    echo $directivas->crea_modal_cuenta();
                 ?>
 
 
@@ -81,4 +79,4 @@
     });
     
     
-</script>    
+</script>    -->

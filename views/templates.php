@@ -112,35 +112,23 @@ class templates{
     }
     
     public function campos_modifica($tabla){
-        
-        if($tabla == 'producto'){            
-            $imagen = array('campo'=>'imagen', 'file'=>'1');
-            $status = array('campo'=>'visible','checkbox'=>'1', 'name'=>'Visible', 'length'=>12);            
-            $this->campos_modificables_text = array('nombre', 'proveedor', 'unidad', 'orden', $imagen, $status);
-        }
-        if($tabla == 'precios'){         
-            $this->campos_modificables_text = array('precio');
-        }
-        if($tabla == 'inventario'){         
-            $this->campos_modificables_text = array('cantidad', 'precio_compra', 'costo_unitario', 'stock');
-        }
-        if($tabla == 'cat_sis_grupo'){
+        if($tabla == 'sis_grupo'){
             $this->campos_modificables_text = array('nombre');
         }
-        if($tabla == 'cat_sis_menu'){
+        if($tabla == 'sis_menu'){
             $this->campos_modificables_text = array('nombre', 'icono');
         }       
         if($tabla == 'sis_usuario'){
-            $grupo = array('campo'=>'grupo_id', 'tabla'=>'cat_sis_grupo', 'name'=>'Grupo_id');
+            $grupo = array('campo'=>'sis_grupo_id', 'tabla'=>'sis_grupo', 'name'=>'Grupo_id');
             $this->campos_modificables_text = array('nombre', 'usuario', 'email', 'password', $grupo);
         }
-        if($tabla == 'cat_sis_submenu'){
-            $menu = array('campo'=>'menu_id', 'tabla'=>'cat_sis_menu', 'name'=>'Menu_id');
+        if($tabla == 'sis_submenu'){
+            $menu = array('campo'=>'sis_menu_id', 'tabla'=>'sis_menu', 'name'=>'Menu_id');
             $this->campos_modificables_text = array(
                 'nombre','icono',$menu);
         }
-        if($tabla == 'cat_sis_accion'){
-            $submenu = array('campo'=>'submenu_id', 'tabla'=>'cat_sis_submenu', 'name'=>'Submenu_id');
+        if($tabla == 'sis_accion'){
+            $submenu = array('campo'=>'sis_submenu_id', 'tabla'=>'sis_submenu', 'name'=>'Submenu_id');
             $visible = array('campo'=>'visible','checkbox'=>'1', 'name'=>'Visible', 'length'=>12);
             $this->campos_modificables_text = array(
                 'nombre',$submenu,$visible);

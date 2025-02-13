@@ -1,3 +1,54 @@
+.navbar{
+    padding: 0px;
+}
+
+.main{
+    padding-top: 20px;
+    width: 40px;
+}
+
+.widget{
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.2);
+}
+
+.user-image {
+    border-radius: 50%;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+    text-align: center;
+}
+
+.dropdown-menu img {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+}
+
+.barra-encabezado {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar {
+    width: 100%;
+}
+
+header .barra-encabezado{
+    height: 5vh;
+    margin: 10px;
+}
+
+header .barra-encabezado .logo{
+    height: 100%;
+    max-height: 100%;
+    width: auto;
+}
+
 .jumbotron {
     position: fixed;
     bottom: 0;
@@ -25,8 +76,6 @@
     font-size: 0.9rem; /* Tamaño de fuente más compacto */
 }
 
-
-
 body{
     /*background: #f2f2f2;*/
     font-size: 16px;
@@ -40,19 +89,17 @@ body{
     min-height: 100vh;
     padding: 0;
 }
-/*.barra-lateral a{
-    color: #fff;
-}*/
-.barra-lateral .logo img{
+
+/*.barra-lateral .logo img{
     width: 150px;
     
-}
-.barra-lateral .logo{
-    /*background: #343a40;*/
+}*/
+/*.barra-lateral .logo{
+    background: #343a40;
     padding: 20px;
     text-align: center;
     margin: 0;
-}
+}*/
 .barra-lateral .menu a{
     display: block;
     padding: 20px;
@@ -75,7 +122,7 @@ body{
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
-.dropdown-menu{
+.dropdown-menu-revisar{/* revisar esta clase que entro en conflicto con la ventana perfil de usuario */
     background: #727b84;
 }
 .contenedor a {
@@ -94,21 +141,21 @@ body{
 .contenedor a:hover{
     box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.2);
 }
-.pool-car-h{
+/*.pool-car-h{
     height: 100px;
     border-radius: .50rem;
 }
 .pool-car-h:hover{
     background: #17a2b8 !important;
-}    
-.contenedor2 a{
+}    */
+/*.contenedor2 a{
     width: 100px;
     height: 100px;
     margin: 10px;
     display: inline-block;
-    /*margin-left: 80px;
+    margin-left: 80px;
     margin-top: 20px;
-    border: 1px solid #000;*/
+    border: 1px solid #000;
     text-align: center;
     color: #fff;
     font-weight: 600;
@@ -117,8 +164,8 @@ body{
 }
 .contenedor2 a:hover{
     box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.2);
-}
-.domino{
+}*/
+/*.domino{
     height: 100px;
     border-radius: .50rem;
 }
@@ -131,7 +178,7 @@ body{
 }
 .baraja:hover{
     background: #17a2b8 !important;
-}
+}*/
 /*.baraja{
     width: 100px;
     height: 100px;
@@ -144,7 +191,7 @@ body{
     color: #fff;
     font-weight: 600;
 }*/
-.reloj{
+/*.reloj{
     font-size: 150%;
 }
 .domino .reloj{
@@ -193,52 +240,41 @@ body{
 .deudor{
     border-color: #FF0000;
     
-}
+}*/
 
-.main{
-    padding-top: 20px;
-    width: 40px;
-}
-.main .widget{
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.2);
-}
-.main .columna{
+
+
+/*.main .columna{
     padding-left: 10px;
 }
 .main .columna .widget .cuentas{
-    /*background: red;*/
+    background: red;
     width: 200px;
-}
-.main .area-juego{
-    
-}
-.table-striped tbody tr:hover{
+}*/
+
+/*.table-striped tbody tr:hover{
     background: #a7e1e1;
     cursor: pointer;
-}
+}*/
 
 .card-container.login {
     max-width: 350px;
     padding: 40px 40px;
 }
-.btn {
+/*.btn {
     font-weight: 700;
     height: 45px;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    /*cursor: default;*/
+    cursor: default;
     margin: 2px;
-}
+}*/
 .login {
-    background-color: #585858;
-    /* just in case there no content*/
+/*    background-color: #585858;*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
     margin-top: 50px;
-    /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 5px 150px 5px;
@@ -290,9 +326,9 @@ body{
 }
 
 .btn.btn-signin {
-    /*background-color: #4d90fe; */
+    background-color: #4d90fe; 
     /*background-color: rgb(104, 145, 162);*/
-     background-color: #1C1C1C;
+/*     background-color: #1C1C1C;*/
     padding: 0px;
     font-weight: 700;
     /*font-size: 14px;*/
@@ -318,7 +354,7 @@ body{
     padding: 0;
 }
 
-.form-inline .form-control{
+/*.form-inline .form-control{
     width: 80px;
 }
 .costo{
@@ -331,7 +367,7 @@ body{
     font-size: 30px;
 }
 
-.icono{/*background: #868e96; */
+.icono{background: #868e96; 
     padding-left: 10px;
     color: #138496;
 }
@@ -342,10 +378,10 @@ body{
     font-size: 25px;
 }
 .icono_boton:hover{
-    /*font-size: 20px;*/
-}
+    font-size: 20px;
+}*/
 
-.encabezado .boton {
+/*.encabezado .boton {
     width: 10%;
 }
 
@@ -408,11 +444,9 @@ body{
     margin: 0px;
     padding: 0px;
     width: 7%;
-}
-.navbar{
-    padding: 0px;
-}
-.imagen_lista{
+}*/
+
+/*.imagen_lista{
     width: 15%;
     height: 15%;
 }
@@ -434,7 +468,7 @@ body{
 }
 .cuadra_ok{
     color: #01DF3A;
-}
+}*/
 @media screen and (max-width: 1300px){
     .barra-lateral{
         max-width: auto;
@@ -464,9 +498,9 @@ body{
         color: #138496;
         font-size: 25px;
     }
-    .table{
+/*    .table{
         font-size: 85%;
-    }
+    }*/
 }
 @media screen and (max-width: 575px){
     .barra-lateral{
@@ -487,7 +521,7 @@ body{
         width: 10%;
     }
 
-    .encabezado .nombre_consumo{
+/*    .encabezado .nombre_consumo{
         width: 15%;
     }
     .encabezado .consumo{
@@ -503,7 +537,7 @@ body{
     }
     #tabla{
         font-size: 55%;
-    }
+    }*/
 }
 @media screen and (max-width: 320px){
     .barra-lateral{
@@ -515,7 +549,7 @@ body{
     .barra-lateral .menu a i{
         margin-right: 0px;
     }
-    .encabezado .nombre_consumo{
+/*    .encabezado .nombre_consumo{
         width: 15%;
     }
     .encabezado .consumo{
@@ -528,5 +562,5 @@ body{
     }
     .table{
         font-size: 75%;
-    }
+    }*/
 }

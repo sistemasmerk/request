@@ -801,7 +801,7 @@ class Modelos{
     //echo"<pre>"; print_r($registro); echo"</pre>";die;
         foreach ($registro as $campo => $value) {
             $visible = "";
-            if($tabla == 'cat_sis_accion'){
+            if($tabla == 'sis_accion'){
                 if($campo == 'visible'){
                     $visible = " , visible = '1' ";
                     continue;

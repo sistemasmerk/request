@@ -6,7 +6,7 @@
     $seguridad = new Seguridad();
     $seccion = $seguridad->seccion;
     $accion = $seguridad->accion;
-//print_r(_TITULO);    
+//print_r($_SESSION);    
     define('SECCION',$seccion);
     define('ACCION',$accion);
     
@@ -52,7 +52,44 @@
         
     </head>
     <body>
-        
+        <?php 
+            if(!empty($_SESSION)){
+        ?>
+            <header>
+                <div class="container d-flex justify-content-between align-items-center">
+                    <div class="barra-encabezado d-flex align-items-center">
+                        <img src=" <?php echo _LOGO ?>" class="logo me-3">
+                        <nav class="navbar navbar-expand-lg navbar-dark">
+                            <div class="container">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?php echo './img/avatar.png' ?? 'ruta_por_defecto/user2-160x160.jpg'; ?>" class="user-image rounded-circle" alt="User Image" width="40" height="40">
+                                            <span class="ms-2"><?php if($_SESSION){ print_r($_SESSION['nombre']);} ?></span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                            <li class="text-center">
+                                                <img src="<?php echo './img/avatar.png' ?? 'ruta_por_defecto/user2-160x160.jpg'; ?>" class="img-fluid rounded-circle my-2" width="80" height="80" alt="User Image">
+                                                <p class="mb-1">Perfil - <?php echo isset($listaPermisos[0]['NombrePerfil']) ? $listaPermisos[0]['NombrePerfil'] : 'Perfil no definido'; ?></p>
+                                                <small ><?php echo date('d/m/Y'); ?></small>
+                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li class="text-center">
+
+                                                <a href="#" onclick="logout()" class="text-danger"><i class="bi bi-power fs-1"></i></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+            </header>
+        <?php
+            } 
+        ?>
         <div class="container-fluid">
             <div class="row">
                 
@@ -60,8 +97,7 @@
                     <?php 
                         if($seguridad->menu){
                     ?>
-                    <img src=" <?php echo _LOGO ?>" class="logo">
-                    <!--<nav class="menu d-flex d-sm-block justify-content-center flex-nowrap navbar-dark bg-dark">-->
+
                     <nav class="navbar menu d-flex d-sm-block justify-content-center flex-nowrap navbar-dark bg-dark">
                         <?php  echo $directiva->menu(); ?>                               
                     </nav>

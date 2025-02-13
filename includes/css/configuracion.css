@@ -1,22 +1,27 @@
+
 body{
-    background: #f2f2f2;/*Color de fondo del contenedor*/
+/*    background: #f2f2f2; Color de fondo del contenedor*/
+/*    background: #010409;*/
 }
 
-.barra-lateral{
-    background: #343a40;/*Color de la barra lateral*/
+.barra-lateral, header, body, .dropdown-menu, .btn-signin{
+    background: #010409;/*Color de la barra lateral, body y header #343a40*/
     /*color: #fff;*/ 
 }
 .barra-lateral a{
     color: #fff;/*Color del texto en menu*/
 }
-.barra-lateral .logo img{
-    width: 150px;/*tamaño del logo*/    
+.menu, .widget, .login, .jumbotron{
+    background: #0d1117 !important;/*color de fondo del menu, login, jumbotron y widget*/
+/*    border: 1px solid #3d444d;*/
 }
 
-.barra-lateral .logo{
-    background: #343a40;/*color del fondo en area de logo*/  
-    width: 150px;  /* Ajusta el ancho del logo según necesites */
-    height: auto;
+.barra-lateral{
+    border-right: 1px solid #3d444d;/*borde derecho de la barra lateral*/
+}
+
+header{
+    border-bottom: 1px solid #3d444d;/*borde bajo del header*/
 }
 
 .barra-lateral .menu a:hover{
@@ -24,8 +29,12 @@ body{
 }
 
 .jumbotron {
-    background-color: #f8f9fa;/* Color de fondo del jumbotron */
+/*    background-color: #f8f9fa; Color de fondo del jumbotron */
+/*    background-color: #0d1117;*/
+    border-top: 1px solid #3d444d;
 }
 
-
-
+.dropdown-menu{
+    background: #212529; /*color de fondo de la ventana de perfil de usuario*/
+    color: #f2f2f2;/*color de letra*/
+}
