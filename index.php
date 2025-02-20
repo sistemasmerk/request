@@ -98,9 +98,12 @@
                         if($seguridad->menu){
                     ?>
 
-                    <nav class="navbar menu d-flex d-sm-block justify-content-center flex-nowrap navbar-dark bg-dark">
-                        <?php  echo $directiva->menu(); ?>                               
-                    </nav>
+<!--                    <nav class="navbar menu navbar-dark bg-dark">-->
+                        <?php echo $directiva->menu2(); ?>                               
+<!--                    </nav>-->
+
+                    
+
                     <?php
                         } 
                     ?>

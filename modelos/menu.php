@@ -12,7 +12,8 @@ class Menu extends Modelos{
             $consulta = "SELECT 
                             menu.id_sis_menu AS id ,
                             menu.icono AS icono,
-                            menu.nombre AS descripcion
+                            menu.nombre AS descripcion,
+                            menu.titulo
                         FROM sis_menu AS menu
                             INNER JOIN sis_submenu AS seccion_menu ON seccion_menu.sis_menu_id = menu.id_sis_menu
                             INNER JOIN sis_accion AS accion ON accion.sis_submenu_id = seccion_menu.id_sis_submenu
@@ -51,7 +52,7 @@ class Menu extends Modelos{
                 
                 $grupo_id = $_SESSION['grupo_id'];
 
-                $consulta = "SELECT menu.id_sis_menu AS id, menu.icono AS icono,	menu.nombre AS descripcion, submenu.nombre AS seccion
+                $consulta = "SELECT submenu.id_sis_submenu AS id, submenu.icono AS icono, submenu.nombre AS descripcion, submenu.nombre AS seccion, submenu.titulo AS titulo
                             FROM sis_menu AS menu 
                                 INNER JOIN sis_submenu AS submenu ON menu.id_sis_menu = submenu.sis_menu_id
                                 INNER JOIN sis_accion AS accion ON submenu.id_sis_submenu = accion.sis_submenu_id

@@ -7,134 +7,200 @@ class Directivas{
 		$registros = $modelo_menu->obten_menu_permitido();
 		$menus = $registros['registros'];
         
-                $html = '<ul class="navbar-nav mr-auto">';
-                $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=inicio" class="nav-link"><i class="bi bi-house"></i><span>Inicio</span></a></li>';
-                //$html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link"><i class="bi bi-power"></i><span>Salir</span></a></li>';
-                //echo"<pre> --------"; print_r('lllll' ); echo"</pre>";//die;
-                    foreach ($menus as $key => $menu) {
-                            $etiqueta_menu = str_replace('_', ' ', $menu['descripcion']);
+                $html = '<ul class="navbar-nav me-auto flex-column">';
+                $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=inicio" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio"><i class="bi bi-house"></i> <span class="menu-text">Inicio</span></a></li>';
+        //echo"<pre> --------"; print_r($menus); echo"</pre>";die;        
+                foreach ($menus as $key => $menu) {
+                        //$etiqueta_menu = str_replace('_', ' ', $menu['titulo']);
 
-                            $submenu = $this->submenu($menu['id']);
-    
-                            $html .=" <li class='nav-item active dropdown'>
-                                <a href='#' class='nav-link dropdown-toggle' id='menu-categorias' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >
-                                    <i class='".$menu['icono']."'></i><span>".ucfirst($etiqueta_menu)."</span>                              
-                                </a>
-                                <div class='dropdown-menu' aria-labelledby='menu-categorias'>
-                                    ".$submenu."
-                                </div></li>";                        
-                    }
-                    $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link"><i class="bi bi-power"></i><span>Salir</span></a></li>';
+                        $submenu = $this->submenu($menu['id']);
+
+                        $html .= '<li class="nav-item dropdown">
+                            
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="right" title="Configuración">
+                                <i class="'.$menu['icono'].'"></i><span class="menu-text">'. $menu['titulo'] .'</span>                              
+                            </a>
+                            
+                            <ul class="dropdown-menu" aria-labelledby="menu-categorias">
+                                ' . $submenu . '
+                            
+                            </ul>
+                            </li>';                        
+                }
+                    $html .= '<li class="nav-item active"><a href="index.php?seccion=session&accion=logout" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Salir"><i class="bi bi-power"></i> <span class="menu-text">Salir</span></a></li>';
                 $html .= '</ul>';
-                
+        //echo"<pre> --------"; print_r($html); echo"</pre>";die;        
 		return $html;
 	}
-        public function submenu($menu_id){
+        public function menu2(){
+            $html = '<nav class="navbar menu navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav me-auto flex-column">
+        <!-- Inicio -->
+        <li class="nav-item active">
+            <a href="index.php?seccion=session&accion=inicio" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Inicio">
+                <i class="bi bi-house"></i> <span class="menu-text">Inicio</span>
+            </a>
+        </li>
+
+        <!-- Menú Configuración -->
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="right" title="Configuración">
+                <i class="bi bi-gear"></i> <span class="menu-text">Configuración</span>                              
+            </a>
+
+            <!-- Submenú de Configuración -->
+            <ul class="dropdown-menu" aria-labelledby="menu-categorias">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="submenu-categorias">
+                        <i class="bi bi-gear"></i> <span class="menu-text">Menu</span> <b class="caret"></b>
+                    </a>
+
+                    <!-- Submenú oculto por defecto -->
+                    <ul class="dropdown-menu sub-menu">
+                        <li><a href="index.php?seccion=cat_sis_menu&accion=alta" class="dropdown-item"><i class="bi bi-plus"></i> Alta</a></li>
+                        <li><a href="index.php?seccion=cat_sis_menu&accion=lista" class="dropdown-item"><i class="bi bi-card-checklist"></i> Lista</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Salir -->
+        <li class="nav-item active">
+            <a href="index.php?seccion=session&accion=logout" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Salir">
+                <i class="bi bi-power"></i> <span class="menu-text">Salir</span>
+            </a>
+        </li>
+    </ul>  
+    </div></div>
+</nav>
+<style>
+/* Mantener los dropdowns visibles */
+.dropdown-menu.show {
+    display: block !important;  /* Asegura que siempre estén visibles */
+    position: static !important;  /* Evita que se superpongan a otros elementos */
+    width: 100%;  /* Hace que ocupen todo el ancho */
+}
+
+/* Ajustar el submenú */
+.sub-menu {
+    padding-left: 20px; /* Indentación para distinguir submenú */
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #343a40;
+    min-width: 150px;
+}
+#submenu-categorias:hover + .sub-menu,
+.sub-menu:hover {
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: #343a40;
+    min-width: 150px;
+}
+.dropdown-menu {
+    position: relative;
+}
+@media (max-width: 768px) {
+    .menu-text {
+        display: none;
+    }
+    
+    .nav-link {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .nav-link i {
+        font-size: 1.5rem; /* Ajustar el tamaño del icono */
+    }
+}
+
+@media (max-width: 575px) {
+    .navbar-nav {
+        display: none; /* Ocultar el menú */
+    }
+
+    /* Mostrar el botón de menú en pantallas pequeñas */
+    .navbar-toggler {
+        display: block;
+    }
+}
+@media (min-width: 576px) {
+    .menu-text {
+        display: inline; /* Mostrar texto */
+    }
+}
+
+@media (max-width: 575px) {
+    .menu-text {
+        display: none; /* Ocultar texto en pantallas pequeñas */
+    }
+
+    .nav-link i {
+        font-size: 1.5rem; /* Ajustar el tamaño del icono */
+    }
+}
+
+</style>
+
+';
+            return $html;
+        }
+        public function submenu($menu_id){//$cont = 1; echo $cont . " -------- <br>"; $cont++;
 		$modelo_submenu = new Menu();
 		$resultado = $modelo_submenu->obten_submenu_permitido($menu_id);
 		$menus = $resultado['registros'];
         
 		$html = "";
 		foreach ($menus as $key => $menu) {
-        //echo"<pre> --------"; print_r($menu  ); echo"</pre>";die;
-                    $etiqueta_menu = str_replace('_', ' ', $menu['descripcion']);
+        
+                    //$etiqueta_menu = str_replace('_', ' ', $menu['descripcion']);
+    //echo"<pre> --------"; print_r($menu  ); echo"</pre>";//die;
+                    //$seccion_menu_descripcion = $menu['seccion'];
 
-                    $seccion_menu_descripcion = $menu['seccion'];
-
-                    $submenu = $this->link_menu($menu['id'], $seccion_menu_descripcion);
-    
-                    $html = $html.$submenu;
+                    $accion = $this->link_menu($menu['id'], $menu['descripcion']);
+                    $html .= '<li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="submenu-categorias">
+                            <i class="' . $menu['icono'] .'"></i>
+                            <span class="menu-text"> '. $menu['titulo'] .'</span>
+                            <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu sub-menu">
+                      	' . $accion . '
+                      </ul>
+                    </li>';
 		}
 		return $html;
 
 	}
         public function link_menu($seccion_menu_id, $seccion_menu_descripcion){
-		$link_seccion_menu_descripcion = strtolower($seccion_menu_descripcion);
+		//$link_seccion_menu_descripcion = strtolower($seccion_menu_descripcion);
 		$modelo_accion = new Accion();
 		$resultado = $modelo_accion->obten_accion_permitida($seccion_menu_id);
 		$menus = $resultado['registros'];
-   //echo"<pre> --------"; print_r($menus  ); echo"</pre>";die;                     
+   //echo"<pre> ----++----"; print_r($menus  ); echo"</pre>";die;                     
 		$html = "";
 		foreach ($menus as $key => $menu) {
 			//$link_accion = strtolower($menu['accion_descripcion']);
                         $link_accion = strtolower($menu['sis_accion_nombre']);
-                        
-			$etiqueta_accion = ucfirst($link_accion);
+            
+			//$etiqueta_accion = ucfirst($link_accion);//sis_accion_icono
     
-			$html .= "<a href='index.php?seccion=$link_seccion_menu_descripcion&accion=$link_accion' class='dropdown-item'>$etiqueta_accion</a>";
+			$html .= "<li><a href='index.php?seccion=$seccion_menu_descripcion&accion=$link_accion' class='dropdown-item'><i class='$menu[sis_accion_icono]'></i>$menu[sis_accion_titulo]</a></li>";
 		}
     
 		return $html;
 
 	}
-        
-        public function obten_productos(){
-            $modelo_producto = new Modelos();
-            $resultado = $modelo_producto->obten_productos();
-            
-            $productos = $resultado['registros'];
-            
-            $html = '';
-            foreach ($productos AS $producto){
-    //echo"<pre> --------"; print_r($producto  ); echo"</pre>";die;            
-                //$html = $html.'<a href="#"><div class="caja"><img class="img-fluid rounded" src="./img/$producto[]"></div></a>';
-                $html = $html."<div id='producto_".$producto['producto_id']."' class='caja d-flex justify-content-center' precio='".$producto['precio']."'><img class='img-fluid rounded' src='./img/".$producto['imagen']."'></div>";                
-            }
-            $html = $html."<div id='producto_13' class='caja d-flex justify-content-center'><i class='icon-dollar peso_venta'></i></div>";
-            return $html;
-        }
-        public function obten_mesas(){
-            $modelo = new Modelos();
-            $mesas = $modelo->obten_mesas();
-        
-            $html = '<div class="contenedor d-flex justify-content-between">';
-            $html2 = '<div class="contenedor2 d-flex justify-content-between">';
-    //echo"<pre> --------"; print_r($mesas  ); echo"</pre>";
-            $modal = '';
-            foreach($mesas AS $mesa){
-                $activo = 0;
-                $data_target = "";
-                $estilo = "bg-secondary";
-                
-                if($mesa["pagado"] == "n"){
-                    $activo = 1;
-                    $data_target = "#modal_".$mesa["mesa_id"];
-                    $estilo = "bg-info";
-                }
-               
-                //$modal = $modal . $this->ventana_modal($mesa["mesa_id"], $mesa["nombre"]);
-                
-                if($mesa["clase"] == 'domino'){ // data-target="#modal_'.$mesa["mesa_id"].'"
-                    $modal = $modal . $this->ventana_modal($mesa["mesa_id"], $mesa["nombre"]);
-                    $html2 = $html2.'<a href="" id="div_mesa_'.$mesa["mesa_id"].'" data-toggle="modal" data-target="'.$data_target.'">
-                                    <div id="mesa_'.$mesa["mesa_id"].'" class="'.$mesa["clase"].  " " .$estilo.'  border-0 rounded mesa" activo="'.$activo.'">
-                                        '.$mesa["nombre"].'
-                                        <br><span class="reloj" id="reloj_'.$mesa["mesa_id"].'"></span>
-                                    </div>
-                                </a>';
-                }else if($mesa["clase"] == 'baraja'){
-                    $modal = $modal . $this->ventana_modal_baraja($mesa["mesa_id"], $mesa["nombre"]);
-                    $html2 = $html2.'<a href="" id="div_mesa_'.$mesa["mesa_id"].'" data-toggle="modal" data-target="#modal_'.$mesa["mesa_id"].'">
-                                    <div id="mesa_'.$mesa["mesa_id"].'" class="'.$mesa["clase"].  " " .$estilo.'  border-0 rounded mesa_baraja" activo="'.$activo.'">
-                                        '.$mesa["nombre"].'
-                                        <br><span class="reloj" id="reloj_'.$mesa["mesa_id"].'"></span>
-                                    </div>
-                                </a>';
-                }else{  // data-target="#modal_'.$mesa["mesa_id"].'"
-                    $modal = $modal . $this->ventana_modal($mesa["mesa_id"], $mesa["nombre"]);
-                    $html = $html.'<a href="" id="div_mesa_'.$mesa["mesa_id"].'" data-toggle="modal" data-target="'.$data_target.'">
-                                    <div id="mesa_'.$mesa["mesa_id"].'" class="'.$mesa["clase"]. " " .$estilo. ' border-0 rounded mesa" activo="'.$activo.'">
-                                        '.$mesa["nombre"].'
-                                        <br><span class="reloj" id="reloj_'.$mesa["mesa_id"].'"></span>
-                                    </div>
-                                </a>';
-                }
-            }
-            $html = $html . '</div>';
-            $html2 = $html2 . '</div>';
-            $html = $html . $html2 . $modal; 
-            return $html;
-        }
         
         public function ventana_modal($id, $nombre){
              
